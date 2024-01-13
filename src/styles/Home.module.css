@@ -1,0 +1,76 @@
+
+
+.blackcells,.whitecells{
+  height:70px;
+  width:70px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+ 
+}
+
+
+
+.row{
+  display:flex;
+  flex-direction:row;
+}
+
+.blackcells{
+  background-color: black;
+  color:white
+}
+
+.whitecells{
+  background-color: white;
+}
+
+.board{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1px;
+  margin-top:20px;
+  justify-content: center;
+  align-items: center;
+  border-style: double;
+  border-color: black;
+  border-width:10px;
+  padding:2px;
+ 
+}
+.arthur{
+  display: flex;
+  justify-content: center;
+  flex-direction:row;
+}
+.test{
+  
+  height:70px;
+  width:70px;
+  position:relative;
+  
+}
+/*
+.test:hover{
+  transform: translate(70px,70px);
+}
+*/
+
+
+.circle{
+  left:0;
+  border-color: black;
+  border-style: solid;
+  right:0;
+  bottom: 0;
+  top:0;
+  border-radius: 1000px;
+  
+}
+
+
+.title{
+  font-size: 50px;
+  font-weight:bold;
+  text-align: center;
+}
