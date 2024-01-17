@@ -1,10 +1,11 @@
 import Cell from './cell'
+import Experience from './experience'
 import { Inter } from 'next/font/google'
+import Piece from './piece'
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 var re=[1,2,3,4,5,6]
-
 
 
 var arthur = []
@@ -19,14 +20,13 @@ for ( let i =0; i<8;i++)
          
             if ((j+1)%2==0)
             {
-              temp.push(   <div key={`${i+1}${j+1}`} className={ (j+1)%2==0 ? styles.blackcells : styles.whitecells}>
-                <Cell color={ i<3? "red" :'white'} id={`!${i+1}${j+1}`} ></Cell>
-              </div>) 
+              temp.push(   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2==0 ? styles.blackcells : styles.whitecells} child={  <Piece color={ i<3? "red" :'white'} id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} ></Piece>}>
+                            </Cell>) 
             }
             else {
-               temp.push (   <div key={`${i+1}${j+1}`} className={ (j+1)%2==0 ? styles.blackcells : styles.whitecells}>
+               temp.push (   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2==0 ? styles.blackcells : styles.whitecells}>
              
-            </div>) 
+            </Cell>) 
             }    
       
     }
@@ -34,13 +34,13 @@ for ( let i =0; i<8;i++)
     {       
                if ((i+1)%2==0)
                {
-                temp.push(   <div key={`${i+1}${j+1}`} className={ (j+1)%2!=0  ? styles.blackcells : styles.whitecells}> </div> )
+                temp.push(   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2!=0  ? styles.blackcells : styles.whitecells}> </Cell> )
 
                }
                           
               else 
               {
-                temp.push(   <div key={`${i+1}${j+1}`} className={ (j+1)%2==0  ? styles.blackcells : styles.whitecells}> </div> )
+                temp.push(   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2==0  ? styles.blackcells : styles.whitecells}> </Cell> )
 
               }
          
@@ -50,14 +50,14 @@ for ( let i =0; i<8;i++)
          {
           if ((j+1)%2==0)
           {
-            temp.push(   <div key={`${i+1}${j+1}`} className={ (j+1)%2!=0 ? styles.blackcells : styles.whitecells}>
+            temp.push(   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2!=0 ? styles.blackcells : styles.whitecells}>
              
-            </div>) 
+            </Cell>) 
           }
           else {
-             temp.push (   <div key={`${i+1}${j+1}`} className={ (j+1)%2!=0 ? styles.blackcells : styles.whitecells}>
-            <Cell color={ i<3? "red" :'white'} id={`!${i+1}${j+1}`} ></Cell>
-          </div>) 
+             temp.push (   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`} cls={ (j+1)%2!=0 ? styles.blackcells : styles.whitecells } child = {<Piece color={ i<3? "red" :'white'} id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} ></Piece>}>
+            
+          </Cell>) 
           }    
          }  
     
@@ -68,14 +68,19 @@ for ( let i =0; i<8;i++)
 
 
 export default function Home() {
+return <div>
+  <> <Experience></Experience> </>
   
+</div>
+/*
   return (
-    <div>
+         <div>
       <div className={styles.title}>Checkers game</div>
-                               
+     
                 
                      
-                      
+       
+         
          <div className={styles.arthur}>
                           <div className={styles.board}>
                           { 
@@ -85,9 +90,11 @@ export default function Home() {
                               
                           }
                       </div>
-            </div>
-                  
+        </div>
+      
     </div>
-  );
+ 
+  );  
+  */
 }
 
