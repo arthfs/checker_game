@@ -1,7 +1,8 @@
+import React, { createContext, useState } from 'react'
+
 import Cell from './cell'
 import Piece from './piece'
 import Pion from './pion'
-import React from 'react'
 import styles from '../styles/Home.module.css'
 
 var ar = {}
@@ -58,8 +59,8 @@ for (let i =0;i<8;i++)
 }
 
 //ar['0 2'][0] = null
-temp = [null,'blackcells']
-console.log(ar['0 1']=temp)
+temp = ['white','blackcells']
+//console.log(ar['3 0']=temp)
 var result =[]
 for (let i=0;i<8;i++)
 {   var temp = []
@@ -74,38 +75,38 @@ for (let i=0;i<8;i++)
             { // console.log(`arthur ${ar[pos]}`)
             temp.push(
             
-                <Cell cls={ ar[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  } id={'er'} child={<Pion color={ar[pos][0]} ></Pion>} >  </Cell>
-            
-                      )
+                <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ ar[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<Piece id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} color={ar[pos][0]} ></Piece>} >  </Cell> )
               }
 
             else 
             {
               temp.push(
-              <Cell cls={ ar[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  } id={'er'}  >  </Cell> 
+              <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ ar[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  >  </Cell> 
               )
             }
             //temp.push(<Pion color={ar[pos]} ></Pion>)
           }
-       else temp.push(<Cell cls={ ar[pos] == 'blackcells' ? styles.blackcells : styles.whitecells  } id={'er'} ></Cell>)
+       else temp.push(<Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ ar[pos] == 'blackcells' ? styles.blackcells : styles.whitecells  }  ></Cell>)
     }
     result.push(<div style={{width:'fit-content', display:'flex',flexDirection:'row',columnGap:'2px'}}> {temp} </div> )
 }
-console.log(result[0])
-export default function Experience() {
-  return (
 
-    <> 
-      <div className={styles.title}>     experience </div> 
-      <div className={styles.arthur}>
-    
-      <div className={styles.board}>
-      {
-        result.map ((e)=>{return e})
-      }
-      </div>
-          
-      </div>
-    </>
+export const experience_context = createContext()
+
+export default function ExperienceContext({children})
+
+{ 
+  const [board,setboard] = useState(ar)
+  const changeboard= ((newvalue)=> setboard((oldvalue)=>{
+   // console.log(newvalue)
+    return {...oldvalue,...newvalue}
+  })  )
+
+ //return <div></div> 
+  
+  return ( <experience_context.Provider value = {{board,changeboard}}>
+          <>{children}</>
+  </experience_context.Provider>
+  
   )
 }

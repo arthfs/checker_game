@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 
+import { clear_cell_color } from './dimensions';
 import {context} from  './context'
+import { experience_context } from './experience'
 import { possibility } from './dimensions';
 import { reference } from './reference';
 import styles from "../styles/Home.module.css"
@@ -11,6 +13,7 @@ var test2 = 0
 export default function Piece({color,id,position}) {
   
 const {possibilities,changepossibilities} = useContext(context)
+const { board,changeboard } = useContext(experience_context)
 const {ref} = useContext(reference)
 
 temp_pos = [...possibilities]
@@ -22,7 +25,7 @@ useEffect(() => {
 var pos;
 useEffect(()=>{
   var tess =[];
-  tess = [...possibility('player 1',ref[id],id)['possibilities']]
+  tess = [...possibility('player 1',ref[id],id,board)['possibilities']]
  
   pos = [... tess ];
  //console.log(poss['3 6'])
@@ -37,14 +40,9 @@ const handleClick = () =>{
   
 //  console.log(ref[id])  
     if (color == 'red')
-    { //console.log(pos) 
-      //console.log(`test 2 value: ${test2}`)
+    { 
     
     var oldstyle = document.getElementById('c1 2')
-
-    
-   //console.log(temp_pos)
-   
    
    for (let j = 0;j<temp_pos.length;j++)
     { 
@@ -52,7 +50,8 @@ const handleClick = () =>{
        for (let k =0;k<temp_pos[j][1].length;k++ ) 
         {
          // console.log(temp_pos[j][1][k][1])
-          document.getElementById(temp_pos[j][1][k][1] ).style=oldstyle
+         clear_cell_color(temp_pos[j][1][k][1])
+         // document.getElementById(temp_pos[j][1][k][1] ).style=oldstyle
         }
      // document.getElementById(temp_pos[j][1][1]).style=oldstyle
     }
@@ -102,7 +101,7 @@ element.addEventListener ('click',handleClick)
       u.map((i)=>{
         var height =`${i*10}`;
         
-        return (<div id={`${u.indexOf(i)}`}  className={styles.circle} key={u.indexOf(i)} style={{position:"absolute" , borderRadius:`${  260/2}px`, left: `${ 50 - parseInt(height)}px`   ,right:`${ 50 - parseInt(height)}px` , top:`${ 50 - parseInt(height)}px` ,bottom:`${ 50 - parseInt(height)}px`, backgroundColor:`${color}`}}></div>)
+        return (<div id={`${u.indexOf(i)}`}  className={styles.circle} key={u.indexOf(i)} style={{position:"absolute" , borderRadius:`${  260/2}px`, left: `${ 50 - parseInt(height)}px`   ,right:`${ 50 - parseInt(height)}px` , top:`${ 50 - parseInt(height)}px` ,bottom:`${ 50 - parseInt(height)}px`, backgroundColor:`${color}`,   transition: "translate 0.01s"}}></div>)
       })
     }
 

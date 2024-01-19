@@ -19,6 +19,7 @@
 .blackcells{
   background-color: black;
   color:white;
+  transition: background-color 0.91s;
   
 }
 
@@ -39,17 +40,22 @@
   padding:2px;
  
 }
-.arthur{
+
+.arthur
+{
   display: flex;
   justify-content: center;
   flex-direction:row;
 }
-.test{
+
+.test
+{
   
   height:70px;
   width:70px;
   position:relative;
   
+
 }
 /*
 .test:hover{
@@ -58,7 +64,8 @@
 */
 
 
-.circle{
+.circle
+{
   left:0;
   border-color: black;
   border-style: solid;
@@ -66,11 +73,12 @@
   bottom: 0;
   top:0;
   border-radius: 1000px;
-  
+  transition: translate 0.0002ms;  
 }
 
 
-.title{
+.title
+{
   font-size: 50px;
   font-weight:bold;
   text-align: center;
