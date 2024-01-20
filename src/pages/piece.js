@@ -29,7 +29,9 @@ useEffect(()=>{
  
   pos = [... tess ];
  //console.log(poss['3 6'])
-},[ref])
+// console.log(board['2 5'])
+// console.log(possibilities)  
+},[ref,board])
 
 useEffect(()=>
 {
@@ -38,10 +40,10 @@ const element = document.getElementById(id);
 
 const handleClick = () =>{
   
-//  console.log(ref[id])  
+ //console.log( possibility('player 1',ref[id],id,board))
     if (color == 'red')
     { 
-    
+//   console.log(board['2 5'])
     var oldstyle = document.getElementById('c1 2')
    
    for (let j = 0;j<temp_pos.length;j++)
@@ -55,18 +57,21 @@ const handleClick = () =>{
         }
      // document.getElementById(temp_pos[j][1][1]).style=oldstyle
     }
-    catch(e){console.log(`@@${temp_pos[j][1]}`)}
+    catch(e){//console.log(`@@${temp_pos[j][1]}`)
+  }
     }
     temp_pos = []
-    changepossibilities ([])
+    //changepossibilities ([])
     
     for (let i=0 ;i<pos.length;i++ )
     {
       temp_pos.push(pos[i])
     }
-    
-    changepossibilities([[id,temp_pos]])
-    
+   // console.log(possibility('player 1',ref[id],id,board))  
+//   console.log(position)
+//    changepossibilities([[id,position,temp_pos]])
+     changepossibilities([[id,possibility('player 1',ref[id],id,board)['position'],temp_pos]])
+
     for (let i = 0 ;i<pos.length;i++)
     {
       try 
@@ -88,7 +93,7 @@ element.addEventListener ('click',handleClick)
  return ()=>{ element.removeEventListener('click',handleClick)};
 
     
-},[ref]);
+},[ref,board]);
   
 
 

@@ -15,7 +15,7 @@ export   function possibility (player, position,id,board){
       
   if (player=='player 1') 
   { 
-    temp1r +=1
+    temp1r+=1
     temp1c-=1;
 
     temp2c+=1
@@ -35,7 +35,7 @@ export   function possibility (player, position,id,board){
   } 
   else
   {
-    temp1r -=1
+    temp1r-=1
     temp1c-=1;
 
     temp2c+=1
@@ -72,10 +72,11 @@ export function clear_cell_color(id)
       {
       for (let i =0;i<id.length;i++)
               {
-              for (let j =0;j<id[i][1].length;j++)
+              for (let j =0;j<id[i][2].length;j++)
               {
-                console.log(id[i][1][j][1])
-                document.getElementById(id[i][1][j][1]).style=oldstyle
+               // console.log(id[i][2][j][1])
+               // document.getElementById(id[i][1][j][1]).style=oldstyle
+               document.getElementById(id[i][2][j][1]).style=oldstyle
               }
       }
 }
