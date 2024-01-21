@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-
+export const player = 'player 2'
 
 export default function Home() {
  return ( <div> 

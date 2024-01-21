@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import Cell from './cell'
 import Piece from './piece'
 import { experience_context } from './experience'
+import {player} from './index'
 import styles from "../styles/Home.module.css"
 import { useState } from 'react'
 
@@ -32,6 +33,7 @@ useEffect(()=>{
                temp.push(
                
                    <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<Piece id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} color={board[pos][0]} ></Piece>} >  </Cell> )
+                                  
                  }
    
                else 

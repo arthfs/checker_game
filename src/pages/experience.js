@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react'
 import Cell from './cell'
 import Piece from './piece'
 import Pion from './pion'
+import {player} from './index'
 import styles from '../styles/Home.module.css'
 
 var ar = {}
@@ -18,7 +19,8 @@ for (let i =0;i<8;i++)
                 if ((j+1)%2==0)
                 {
                 var back = (j+1)%2==0 ? 'blackcells' :'whitecells'
-                var ce = i<3 ? 'red' : 'white'
+                //var ce = i<3 ? 'red' : 'white'
+                   var ce = (player == 'player 1' && i>4) ||(player == 'player 2' && i<4 ) ? 'red':'white'
                  empty = [ce,back]
                 }
                 else {
@@ -48,7 +50,9 @@ for (let i =0;i<8;i++)
               }
               else {
                 var back = (j+1)%2!=0 ? 'blackcells' :'whitecells';
-                var ce =    i<3 ? 'red' : 'white'
+              //  var ce =    i<3 ? 'red' : 'white'
+              var ce = (player == 'player 1' && i>4) ||(player == 'player 2' && i<4 ) ? 'red':'white'
+
                 empty = [ce,back]  
               }    
              }  
