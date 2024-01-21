@@ -12,8 +12,9 @@ export   function possibility (player, position,id,board){
   let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
   const result = []
 
-      
-  if (player=='player 1') 
+  //console.log(id[0])
+  if (parseInt(id[0])<4)
+ // if (player=='player 1') 
   { 
     temp1r+=1
     temp1c-=1;
@@ -40,13 +41,15 @@ export   function possibility (player, position,id,board){
 
     temp2c+=1
     if ((temp1r>=1 && temp1r<=8) && ((temp1c>=1 && temp1c<=8) ))  
-    {
-      result.push([position, `c${temp1r} ${temp1c}`])      
+    { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`
+ 
+     if (board[test]=='blackcells'|| board[test][0]==null) result.push([position, `c${temp1r} ${temp1c}`])      
     }
     
     if (( (temp1r>=1 && temp1r<=8) && ((temp2c>=1 && temp2c<=8) )))
-    {
-      result.push([position, `c${temp1r} ${temp2c}`])      
+    { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`
+   
+    if (board[test]=='blackcells' || board[test][0]==null) result.push([position, `c${temp1r} ${temp2c}`])      
     }
   }
 

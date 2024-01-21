@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { clear_cell_color } from './dimensions';
 import {context} from  './context'
 import { experience_context } from './experience'
+import {player} from './index'
 import { possibility } from './dimensions';
 import { reference } from './reference';
 import styles from "../styles/Home.module.css"
@@ -25,7 +26,7 @@ useEffect(() => {
 var pos;
 useEffect(()=>{
   var tess =[];
-  tess = [...possibility('player 1',ref[id],id,board)['possibilities']]
+  tess = [...possibility(player,ref[id],id,board)['possibilities']]
  
   pos = [... tess ];
  //console.log(poss['3 6'])
@@ -41,23 +42,24 @@ const element = document.getElementById(id);
 const handleClick = () =>{
   
  //console.log( possibility('player 1',ref[id],id,board))
-    if (color == 'red')
+  //  if (color == 'red')
+    if (true)
     { 
-//   console.log(board['2 5'])
+ //  console.log(board['2 5'])
     var oldstyle = document.getElementById('c1 2')
    
    for (let j = 0;j<temp_pos.length;j++)
     { 
       try{ 
-       for (let k =0;k<temp_pos[j][1].length;k++ ) 
+       for (let k =0;k<temp_pos[j][2].length;k++ ) 
         {
-         // console.log(temp_pos[j][1][k][1])
-         clear_cell_color(temp_pos[j][1][k][1])
-         // document.getElementById(temp_pos[j][1][k][1] ).style=oldstyle
-        }
-     // document.getElementById(temp_pos[j][1][1]).style=oldstyle
+        
+         clear_cell_color(temp_pos[j][2][k][1])
+         }
+   
     }
-    catch(e){//console.log(`@@${temp_pos[j][1]}`)
+    catch(e){console.log(e.message)
+      //console.log(`@@${temp_pos[j][1]}`)
   }
     }
     temp_pos = []
@@ -67,10 +69,8 @@ const handleClick = () =>{
     {
       temp_pos.push(pos[i])
     }
-   // console.log(possibility('player 1',ref[id],id,board))  
-//   console.log(position)
-//    changepossibilities([[id,position,temp_pos]])
-     changepossibilities([[id,possibility('player 1',ref[id],id,board)['position'],temp_pos]])
+
+     changepossibilities([[id,possibility(player,ref[id],id,board)['position'],temp_pos]])
 
     for (let i = 0 ;i<pos.length;i++)
     {
