@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 
 import Cell from './cell'
+import King from './king'
 import Piece from './piece'
 import { experience_context } from './experience'
 import {player} from './index'
@@ -28,14 +29,21 @@ useEffect(()=>{
            
           if (board[pos]!= 'blackcells' && board[pos]!='whitecells') 
              { 
-               if (board[pos][0]!= null)
+               if (board[pos][0]!= null && !['kred','kwhite'].includes( board[pos][0]  ))
                { 
                temp.push(
                
                    <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<Piece id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} color={board[pos][0]} ></Piece>} >  </Cell> )
                                   
                  }
-   
+                 
+                else if ( ['kred','kwhite'].includes( board[pos][0] ))
+                { console.log('king')
+                  temp.push(
+                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
+                  
+
+                }
                else 
                {
                  temp.push(
@@ -53,7 +61,22 @@ useEffect(()=>{
   changeresult(result)
 
   },[])
+//console.log(!['kred','kwhite'].includes( 'red' ))
 //console.log(result)
+
+
+board['1 2'] = {null:'whitecells'}
+board['6 1'] = {null:'whitecells'}
+board['0 7'] = {null:'whitecells'}
+board['1 6'] = {null:'whitecells'}
+board['2 5'] = {null:'whitecells'}
+
+board['6 7'] = {null:'whitecells'}
+board['1 2'] = {null:'whitecells'}
+board['1 2'] = {null:'whitecells'}
+board['1 2'] = {null:'whitecells'}
+
+board['3 4'] = ['kwhite','whitecells']
 
 
 

@@ -6,7 +6,7 @@ export var ref = [1,2,3,4,5,6,7,8]
 
 export   function possibility (player, position,id,board){
  
- 
+ try{
   const [r,c] = position.toString().split(' ')
   const poss =[]
   let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
@@ -54,7 +54,12 @@ export   function possibility (player, position,id,board){
   }
 
   
-  return {'id':id,'position':position,'possibilities': [...result]};
+  return {'id':id,'position':position,'possibilities': [...result]}; }
+
+  catch(e) 
+  {
+    
+  }
 }
 
 export function move(idsource,idtarget)

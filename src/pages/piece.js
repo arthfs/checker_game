@@ -13,9 +13,11 @@ var temp_pos= []
 var test2 = 0
 export default function Piece({color,id,position}) {
   
+
 const {possibilities,changepossibilities} = useContext(context)
 const { board,changeboard } = useContext(experience_context)
 const {ref} = useContext(reference)
+
 
 temp_pos = [...possibilities]
 useEffect(() => {
@@ -25,10 +27,12 @@ useEffect(() => {
 
 var pos;
 useEffect(()=>{
+  try{
   var tess =[];
   tess = [...possibility(player,ref[id],id,board)['possibilities']]
  
   pos = [... tess ];
+  } catch(e){}
  //console.log(poss['3 6'])
 // console.log(board['2 5'])
 // console.log(possibilities)  
@@ -41,7 +45,7 @@ const element = document.getElementById(id);
 
 const handleClick = () =>{
   
- //console.log( possibility('player 1',ref[id],id,board))
+ console.log( possibility('player 1',ref[id],id,board))
   //  if (color == 'red')
     if (true)
     { 
@@ -88,9 +92,17 @@ const handleClick = () =>{
     
     }
 }
+try{
 element.addEventListener ('click',handleClick)
+} 
+catch(e) {}
 
- return ()=>{ element.removeEventListener('click',handleClick)};
+ return ()=>{ 
+  try{ element.removeEventListener('click',handleClick)
+}
+catch(e){}
+};
+
 
     
 },[ref,board]);
