@@ -38,9 +38,9 @@ useEffect(()=>{
                  }
                  
                 else if ( ['kred','kwhite'].includes( board[pos][0] ))
-                { console.log('king')
+                { //console.log('king')
                   temp.push(
-                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
+                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King id={`k${i} ${j}`} position ={`${i} ${j}`} piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
                   
 
                 }
@@ -75,6 +75,9 @@ board['6 7'] = {null:'whitecells'}
 board['1 2'] = {null:'whitecells'}
 board['1 2'] = {null:'whitecells'}
 board['1 2'] = {null:'whitecells'}
+board['2 3'] = {null:'whitecells'}
+board['6 2'] = {null:'whitecells'}
+board['5 2'] = {null:'whitecells'}
 
 board['3 4'] = ['kwhite','whitecells']
 

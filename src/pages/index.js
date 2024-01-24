@@ -8,7 +8,7 @@ export const player = 'player 1'
 
 export default function Home() {
  return ( <div> 
-          <King piece={<Piece color = 'red' position={''} id={''}></Piece>}></King>
+          <King id='k1 3' piece={<Piece color = 'red' position={''} id={'0 1'}></Piece>}></King>
           <Affichage></Affichage>
  </div>
  )
