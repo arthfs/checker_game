@@ -13,12 +13,15 @@ export default function King({piece,id,position}) {
   useEffect(()=>{
     for (let i =0 ;i<possibilities.length;i++)
     {
-     console.log(possibilities[i])
+    // console.log(possibilities[i])
     //var element =  document.getElementById('c5 0')
      
      var cell =  document.getElementById(possibilities[i][1])
      //console.log(element)
+    try {
      cell.style.backgroundColor = 'yellow'
+    }
+    catch(e){}
     }
 
     const handleclick = ()=> {

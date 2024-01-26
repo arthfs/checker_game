@@ -38,7 +38,9 @@ export   function possibility (player, position,id,board){
             
             } 
             else
-            {
+            { //console.log('here')
+             //console.log(`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`)
+            //  console.log(`${board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`]}`)
               temp1r-=1
               temp1c-=1;
 

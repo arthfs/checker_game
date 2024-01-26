@@ -79,6 +79,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                    
                     var id1 = id.replace('c','')
                     changeref({ [source] : id1 })
+                   // console.log(board[`${parseInt( source[0])-1 } ${parseInt( source[2])-1 }`])
                    
                     
              //   try
