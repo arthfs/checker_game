@@ -5,9 +5,10 @@ export var height_cell ="200px";
 export var ref = [1,2,3,4,5,6,7,8]
 
 export   function possibility (player, position,id,board){
+  // get all the possibiles moves for a particular piece
   const result = []
  if (id[0]!='k')
-    {
+    { //if this piece is not a king it can move forward on the left or on the right 
           try{
             const [r,c] = position.toString().split(' ')
             const poss =[]
@@ -65,6 +66,7 @@ export   function possibility (player, position,id,board){
     }
   else 
   {
+    // The piece is a king, it can move to all the four diagonals 
    var currentr = parseInt(id[1])
    var currentc = parseInt(id[3])
 
@@ -77,8 +79,11 @@ export   function possibility (player, position,id,board){
     if (board[`${currentr} ${currentc}`][0] == null)    result.push( [id, `c${currentr+1} ${currentc+1}`])
     else {
           try
-          {
-            if (board[`${currentr-1} ${currentc-1}`][0] == null)    result.push( [id, `c${currentr} ${currentc}`])
+          { 
+            
+           // console.log(`${parseInt(id[1])} ${parseInt(id[3])} ${board[kingid][0].slice(1)}`)
+           console.log(`${board[`${currentr} ${currentc}`][0]}`)
+            if (board[`${currentr-1} ${currentc-1}`][0] == null && (board[`${currentr} ${currentc}`][0] != board[`${parseInt(id[1])} ${parseInt(id[3])}`][0].slice(1) ) )    result.push( [id, `c${currentr} ${currentc}`])
     
           }
           catch(e) {}
@@ -100,7 +105,7 @@ export   function possibility (player, position,id,board){
    //  console.log(board[`${currentr} ${currentc}`])
    try{   if ( board[`${currentr} ${currentc}`][0] == null || board[`${currentr} ${currentc}`] == 'blackcells' )     result.push( [id, `c${currentr+1} ${currentc+1}`])
       else {
-        try{  if ( board[`${currentr-1} ${currentc+1}`][0] == null || board[`${currentr-1} ${currentc+1}`] == 'blackcells' )     result.push( [id, `c${currentr} ${currentc+2}`])
+        try{  if ( board[`${currentr-1} ${currentc+1}`][0] == null || board[`${currentr-1} ${currentc+1}`] == 'blackcells' && (board[`${currentr} ${currentc}`][0] != board[`${parseInt(id[1])} ${parseInt(id[3])}`][0].slice(1) ) )     result.push( [id, `c${currentr} ${currentc+2}`])
       }
         catch(e) 
         {}
@@ -123,7 +128,7 @@ export   function possibility (player, position,id,board){
      try{  if ( board[`${currentr} ${currentc}`][0] == null || board[`${currentr} ${currentc}`] == 'blackcells' )    result.push( [id, `c${currentr+1} ${currentc+1}`])
           else 
           { try {
-            if ( board[`${currentr+1} ${currentc+1}`][0] == null || board[`${currentr+1} ${currentc+1}`] == 'blackcells' )    result.push( [id, `c${currentr+2} ${currentc+2}`])
+            if ( board[`${currentr+1} ${currentc+1}`][0] == null || board[`${currentr+1} ${currentc+1}`] == 'blackcells' && (board[`${currentr} ${currentc}`][0] != board[`${parseInt(id[1])} ${parseInt(id[3])}`][0].slice(1) ) )    result.push( [id, `c${currentr+2} ${currentc+2}`])
 
           }
           catch(e) {}
@@ -137,7 +142,7 @@ export   function possibility (player, position,id,board){
       currentr = parseInt(id[1])
       currentc = parseInt(id[3])
      
-      //going to sout west
+      //going to south west
       while(currentr<8 && currentc >=0)
       {
       
@@ -149,7 +154,7 @@ export   function possibility (player, position,id,board){
         else 
             {
               try {
-                if ( board[`${currentr+1} ${currentc-1}`][0] == null || board[`${currentr+1} ${currentc-1}`] == 'blackcells' )    result.push( [id, `c${currentr+2} ${currentc}`])
+                if ( board[`${currentr+1} ${currentc-1}`][0] == null || board[`${currentr+1} ${currentc-1}`] == 'blackcells' && (board[`${currentr} ${currentc}`][0] != board[`${parseInt(id[1])} ${parseInt(id[3])}`][0].slice(1) ))    result.push( [id, `c${currentr+2} ${currentc}`])
               }
               catch(e) {
                 
