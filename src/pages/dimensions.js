@@ -75,13 +75,22 @@ export   function possibility (player, position,id,board){
     currentr-=1
     currentc-=1
     if (board[`${currentr} ${currentc}`][0] == null)    result.push( [id, `c${currentr+1} ${currentc+1}`])
+    else {
+          try
+          {
+            if (board[`${currentr-1} ${currentc-1}`][0] == null)    result.push( [id, `c${currentr} ${currentc}`])
+    
+          }
+          catch(e) {}
+          break
+        }
    //   result.push( [id, `c${currentr+1} ${currentc+1}`])
     
    }
 
    currentr = parseInt(id[1])
    currentc = parseInt(id[3])
-   
+  
     //going to north east
     while(currentr>0 && currentc <7)
     {
@@ -90,6 +99,13 @@ export   function possibility (player, position,id,board){
      currentc+=1
    //  console.log(board[`${currentr} ${currentc}`])
    try{   if ( board[`${currentr} ${currentc}`][0] == null || board[`${currentr} ${currentc}`] == 'blackcells' )     result.push( [id, `c${currentr+1} ${currentc+1}`])
+      else {
+        try{  if ( board[`${currentr-1} ${currentc+1}`][0] == null || board[`${currentr-1} ${currentc+1}`] == 'blackcells' )     result.push( [id, `c${currentr} ${currentc+2}`])
+      }
+        catch(e) 
+        {}
+        break;
+      }
     }
     catch(e){}
     }
@@ -105,6 +121,14 @@ export   function possibility (player, position,id,board){
        currentc+=1
        //console.log(`${currentr} ${currentc}`)
      try{  if ( board[`${currentr} ${currentc}`][0] == null || board[`${currentr} ${currentc}`] == 'blackcells' )    result.push( [id, `c${currentr+1} ${currentc+1}`])
+          else 
+          { try {
+            if ( board[`${currentr+1} ${currentc+1}`][0] == null || board[`${currentr+1} ${currentc+1}`] == 'blackcells' )    result.push( [id, `c${currentr+2} ${currentc+2}`])
+
+          }
+          catch(e) {}
+          break;
+        }
       }
       catch(e){}
     
@@ -122,6 +146,16 @@ export   function possibility (player, position,id,board){
      //  console.log(`${currentr} ${currentc} ${board[`${currentr} ${currentc}`][0]}`)
       try{ 
         if ( board[`${currentr} ${currentc}`][0] == null || board[`${currentr} ${currentc}`] == 'blackcells' )    result.push( [id, `c${currentr+1} ${currentc+1}`])
+        else 
+            {
+              try {
+                if ( board[`${currentr+1} ${currentc-1}`][0] == null || board[`${currentr+1} ${currentc-1}`] == 'blackcells' )    result.push( [id, `c${currentr+2} ${currentc}`])
+              }
+              catch(e) {
+                
+              }
+            break
+            }
       }
       catch(e) {
         //console.log(currentr)

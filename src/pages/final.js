@@ -65,21 +65,22 @@ useEffect(()=>{
 //console.log(result)
 
 
-board['1 2'] = {null:'whitecells'}
-board['6 1'] = {null:'whitecells'}
-board['0 7'] = {null:'whitecells'}
-board['1 6'] = {null:'whitecells'}
-board['2 5'] = {null:'whitecells'}
+board['1 2'] = [null,'whitecells']
+board['1 0'] = [null,'whitecells']
+board['4 3'] = ['red','whitecells']
+board['2 1'] = [null,'whitecells']
+board['5 4'] = [null,'whitecells']
+board['2 5'] = [null,'whitecells']
+board['3 4'] = ['red','whitecells']
+board['6 7'] = [null,'whitecells']
+board['1 2'] = [null,'whitecells']
+board['1 6'] = ['red','whitecells']
+board['1 2'] = [null,'whitecells']
+board['2 3'] = [null,'whitecells']
 
-board['6 7'] = {null:'whitecells'}
-board['1 2'] = {null:'whitecells'}
-board['1 2'] = {null:'whitecells'}
-board['1 2'] = {null:'whitecells'}
-board['2 3'] = {null:'whitecells'}
-board['6 2'] = {null:'whitecells'}
-board['5 2'] = {null:'whitecells'}
+//board['5 2'] = {null:'whitecells'}
 
-board['3 4'] = ['kwhite','whitecells']
+board['7 6'] = ['kwhite','whitecells']
 
 
 
