@@ -21,7 +21,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
   
 
   useEffect(()=>{
-    //console.log(`changed ${board ['2 5']}`)
+  //  console.log(`changed ${board ['0 1']}`)
+//  console.log(board['5 4'])
+console.log(`56 ${board['5 6']}    45 ${board['4 5']}`)
   changetemp(possibilities)
   },[board,possibilities])
 
@@ -33,7 +35,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
 
     const handleClick=()=>{
       //changeboard({'2 5':[null,'blackcells']})
-     
+    //  console.log(`changed ${board ['0 1']}`)
       
      
       var test  = `${parseInt( id[1])-1 } ${parseInt( id[3])-1}`
@@ -57,6 +59,8 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             present = true; 
                             source = temp[p][0];
                             source1 = temp[p][1]
+                           source1= temp[p][2][q][1]
+                            console.log(temp[p])
                             quit = true;
                             break;
                           
@@ -78,9 +82,10 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                     translationX+= (70 * (parseInt(id[3])- parseInt(source[2] ))) 
                    
                     var id1 = id.replace('c','')
+                   // changeref({'5 6':id1})
                     changeref({ [source] : id1 })
-                   // console.log(board[`${parseInt( source[0])-1 } ${parseInt( source[2])-1 }`])
-                   
+                    //console.log(board[`${parseInt( source[0])-1 } ${parseInt( source[2])-1 }`])
+                 // console.log(  ['1','7'].includes( id[1]) )
                     
              //   try
                 //{   
@@ -93,14 +98,23 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                     
                      var po = `${parseInt( source1[0])-1 } ${parseInt( source1[2])-1}`
                      var poo = [null,"blackcells"]
-                     changeboard({[po]:poo})
-                    
-                    var po1 =  `${parseInt( id[1])-1 } ${parseInt( id[3])-1}`
-                    var poo1 = ['red',"blackcells"]
-                    changeboard({[po1]:poo1})
+                    // changeboard({[po]:poo})
+                     changeboard({'5 6':poo})
+                   // console.log(board['5 6'])
+                      var po1 =  `${parseInt( source1[1])-1 } ${parseInt( source1[3])-1}`
+                  var test = `${parseInt(id[1])-1} ${parseInt(id[3])-1}`
+                 //  console.log(`source1 ${source1}`)
+               //  console.log(`po1 ${po1}`)
+                    //var poo1 =['1','7'].includes(id[1])? [id[0]<4 ? 'kwhite': 'kred','whitecells'] : [ parseInt(source[0])<4 ? 'white': 'red',"blackcells"] 
+                    var poo1 = [ parseInt(source[0])<4 ? 'white': 'red',"blackcells"] 
+                   console.log(po1)
+                    //changeboard({[po1]:poo1})
+                  // changeboard({[test]:['red','blackcells']})
+                   changeboard({'4 5':['red','blackcells']})
+                  //changeboard( {[po1] : ['red','blakcells']})
                    // console.log(`@@ ${po}  ${board['2 5']}`)
                   //  console.log(id)
-                //}
+                //}5396 8902 1464 6379
               //  catch(e){
               //      console.log(`cannot move piece of id ${source}`)
               //  }

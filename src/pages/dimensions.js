@@ -15,7 +15,7 @@ export   function possibility (player, position,id,board){
             let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
            
 
-            //console.log(id[0])
+           // console.log(board['5 6'])
             if (parseInt(id[0])<4)
           // if (player=='player 1') 
             { 
@@ -38,7 +38,7 @@ export   function possibility (player, position,id,board){
             
             } 
             else
-            { //console.log('here')
+            { //console.log(position)
              //console.log(`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`)
             //  console.log(`${board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`]}`)
               temp1r-=1
@@ -47,8 +47,11 @@ export   function possibility (player, position,id,board){
               temp2c+=1
               if ((temp1r>=1 && temp1r<=8) && ((temp1c>=1 && temp1c<=8) ))  
               { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`
-          
-              if (board[test]=='blackcells'|| board[test][0]==null) result.push([position, `c${temp1r} ${temp1c}`])      
+            // console.log(`position ${position} test ${test}`)
+              if (board[test]=='blackcells'|| board[test][0]==null) 
+              { 
+                result.push([position, `c${temp1r} ${temp1c}`])      
+            }
               }
               
               if (( (temp1r>=1 && temp1r<=8) && ((temp2c>=1 && temp2c<=8) )))
@@ -84,7 +87,7 @@ export   function possibility (player, position,id,board){
           { 
             
            // console.log(`${parseInt(id[1])} ${parseInt(id[3])} ${board[kingid][0].slice(1)}`)
-           console.log(`${board[`${currentr} ${currentc}`][0]}`)
+          // console.log(`${board[`${currentr} ${currentc}`][0]}`)
             if (board[`${currentr-1} ${currentc-1}`][0] == null && (board[`${currentr} ${currentc}`][0] != board[`${parseInt(id[1])} ${parseInt(id[3])}`][0].slice(1) ) )    result.push( [id, `c${currentr} ${currentc}`])
     
           }

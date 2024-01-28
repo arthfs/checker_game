@@ -60,34 +60,36 @@ useEffect(()=>{
    
   changeresult(result)
 
-  },[])
+  },[board])
 //console.log(!['kred','kwhite'].includes( 'red' ))
 //console.log(result)
 
-
-board['1 2'] = [null,'whitecells']
-board['1 0'] = [null,'whitecells']
-board['4 3'] = ['red','whitecells']
-board['2 1'] = [null,'whitecells']
-board['0 5'] = [null,'whitecells']
-board['6 5'] = ['white','whitecells']
-board['3 4'] = ['red','whitecells']
-board['6 7'] = [null,'whitecells']
-board['1 2'] = [null,'whitecells']
-board['0 1'] = [null,'whitecells']
-board['1 2'] = [null,'whitecells']
-board['2 3'] = [null,'whitecells']
-
-//board['5 2'] = {null:'whitecells'}
-
-board['7 6'] = ['kwhite','whitecells']
 
 
 
 return (
     <> 
     <div className={styles.title}>     experience </div> 
-    
+    <button onClick={()=>{
+  changeboard({'1 2':[null,'whitecells']})
+  changeboard({'1 2':  [null,'whitecells']})
+changeboard({'1 0' : [null,'whitecells']})
+//changeboard({'4 3' : ['red','whitecells']})
+changeboard({'2 1' : [null,'whitecells']})
+changeboard({'0 5' : [null,'whitecells']})
+//changeboard({'6 5' : ['white','whitecells']})
+//changeboard({'3 4' : ['red','whitecells']})
+changeboard({'6 7' : [null,'whitecells']})
+changeboard({'1 2' : [null,'whitecells']})
+changeboard({'0 1' : [null,'whitecells']})
+changeboard({'1 2' : [null,'whitecells']})
+changeboard({'2 3':  [null,'whitecells']})
+
+//board['5 2'] = {null:'whitecells'}
+
+//board['7 6'] = ['kwhite','whitecells']
+      
+    }}>ideal position</button>
    
     <div className={styles.arthur}>
   

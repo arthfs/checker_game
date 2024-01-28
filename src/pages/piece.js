@@ -21,7 +21,7 @@ const {ref} = useContext(reference)
 
 temp_pos = [...possibilities]
 useEffect(() => {
-
+//console.log(board['5 6'])
 }, [possibilities]); 
 
 
@@ -34,7 +34,7 @@ useEffect(()=>{
   pos = [... tess ];
   } catch(e){}
  //console.log(poss['3 6'])
-// console.log(board['2 5'])
+ //console.log(board['5 6'])
 // console.log(possibilities)  
 },[ref,board])
 
@@ -44,8 +44,8 @@ useEffect(()=>
 const element = document.getElementById(id);
 
 const handleClick = () =>{
-  
- console.log( possibility('player 1',ref[id],id,board))
+ // console.log(id)
+ //console.log( possibility('player 1',ref[id],id,board))
   //  if (color == 'red')
     if (true)
     { 
