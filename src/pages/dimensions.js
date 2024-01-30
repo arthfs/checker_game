@@ -1,22 +1,26 @@
 import React from 'react'
-import { useContext } from 'react'
 
 export var height_cell ="200px";
-export var ref = [1,2,3,4,5,6,7,8]
+
+//export var reference = [1,2,3,4,5,6,7,8]
 
 export   function possibility (player, position,id,board){
+   
   // get all the possibiles moves for a particular piece
   const result = []
+  var arthur = `${parseInt( id[0])-1} ${parseInt( id[2]) -1}` 
+  console.log(`${board[ arthur][0]}`)
  if (id[0]!='k')
     { //if this piece is not a king it can move forward on the left or on the right 
           try{
             const [r,c] = position.toString().split(' ')
             const poss =[]
             let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
-           
+          
 
            // console.log(board['5 6'])
-            if (parseInt(id[0])<4)
+          //  if (parseInt(id[0])<4)
+        if (!(board[arthur][0]=='red' && player == 'player 1'))
           // if (player=='player 1') 
             { 
               temp1r+=1
@@ -26,13 +30,13 @@ export   function possibility (player, position,id,board){
               if ((temp1r>=1 && temp1r<=8) && ((temp1c>=1 && temp1c<=8) ))  
               { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`
           
-                if (board[test]=='blackcells'|| board[test][0]==null)   result.push( [position ,`c${temp1r} ${temp1c}`])      
+                if (board[test]=='blackcells'|| board[test][0]==null)   result.push( [position ,`c${parseInt( temp1r)} ${parseInt(temp1c)}`])      
               }
               
               if (( (temp1r>=1 && temp1r<=8) && ((temp2c>=1 && temp2c<=8) )))
               { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`
             
-                if (board[test]=='blackcells' || board[test][0]==null)  result.push([position, `c${temp1r} ${temp2c}`])      
+                if (board[test]=='blackcells' || board[test][0]==null)  result.push([position, `c${parseInt(temp1r)} ${temp2c}`])      
               }
               
             
@@ -211,8 +215,7 @@ export function clear_cell_color(id)
 
 }
 export default function Dimensions() {
-
-
+ 
   return (
     <div>dimensions</div>
   )
