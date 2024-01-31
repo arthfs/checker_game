@@ -48,7 +48,7 @@ const handleClick = () =>{
   
   //console.log(ref['4 7'])
   //console.log(id)
- console.log( possibility('player 1',ref[id],id,board))
+// console.log( possibility('player 1',ref[id],id,board))
   //  if (color == 'red')
     if (true)
     { 

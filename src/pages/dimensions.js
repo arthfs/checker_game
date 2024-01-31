@@ -9,7 +9,7 @@ export   function possibility (player, position,id,board){
   // get all the possibiles moves for a particular piece
   const result = []
   var arthur = `${parseInt( id[0])-1} ${parseInt( id[2]) -1}` 
-  console.log(`${board[ arthur][0]}`)
+//  console.log(`${board[ arthur][0]}`)
  if (id[0]!='k')
     { //if this piece is not a king it can move forward on the left or on the right 
           try{

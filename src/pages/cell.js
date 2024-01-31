@@ -102,6 +102,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                     
                      var po = `${parseInt( source[0])-1 } ${parseInt( source[2])-1}`
                      var poo = [null,"blackcells"]
+                  var isking=  board[po][0] =='k' ;
+                   console.log(isking)
+                   //  console.log(board[po])
                      changeboard({[po]:poo})
                      //console.log(source)
                     // changeboard({'5 6':poo})
@@ -116,7 +119,17 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                     var poo1 = [ parseInt(source[0])<4 ? 'white': 'red',"blackcells"] 
                   // console.log(po1)
                   //  changeboard({[po1]:poo1})
-                   changeboard({[test]:['red','blackcells']})
+                  
+                   if (!isking && [1,8].includes( parseInt(destination[1])) ) 
+                   {
+                    changeboard({[test]:[ 'k'+board[po][0] ,'blackcells']}) 
+                   }
+                   else 
+                   {
+                   changeboard({[test]:[ board[po][0],'blackcells']})
+                   }
+                   
+                  // console.log([1,7].includes( parseInt(destination[1])))
                   // changeboard({'4 5':['red','blackcells']})
                   //changeboard( {[po1] : ['red','blakcells']})
                    // console.log(`@@ ${po}  ${board['2 5']}`)

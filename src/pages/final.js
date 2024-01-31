@@ -84,7 +84,7 @@ changeboard({'1 2' : [null,'whitecells']})
 changeboard({'0 1' : [null,'whitecells']})
 changeboard({'1 2' : [null,'whitecells']})
 changeboard({'2 3':  [null,'whitecells']})
-
+changeboard({'7 6' : [null,'whitecells']})
 //board['5 2'] = {null:'whitecells'}
 
 //board['7 6'] = ['kwhite','whitecells']
