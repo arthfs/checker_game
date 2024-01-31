@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css"
 
 var u = [5,4.5,4,3.5,3,2.5,2]
 var temp_pos= []
-var test2 = 0
+
 export default function Piece({color,id,position}) {
   
 
@@ -21,8 +21,7 @@ const {ref} = useContext(reference)
 
 temp_pos = [...possibilities]
 useEffect(() => {
-//  console.log(temp_pos)
-//console.log(board['5 6'])
+ 
 }, [possibilities]); 
 
 
@@ -31,12 +30,10 @@ useEffect(()=>{
   try{
   var tess =[];
   tess = [...possibility(player,ref[id],id,board)['possibilities']]
- 
+
   pos = [... tess ];
   } catch(e){}
- //console.log(poss['3 6'])
- //console.log(board['5 6'])
-// console.log(possibilities)  
+
 },[ref,board])
 
 useEffect(()=>
@@ -46,21 +43,17 @@ const element = document.getElementById(id);
 
 const handleClick = () =>{
   
-  //console.log(ref['4 7'])
-  //console.log(id)
-// console.log( possibility('player 1',ref[id],id,board))
+ console.log( possibility(player,ref[id],id,board))
   //  if (color == 'red')
     if (true)
     { 
- //  console.log(board['2 5'])
     var oldstyle = document.getElementById('c1 2')
    
    for (let j = 0;j<temp_pos.length;j++)
     { 
       try{ 
        for (let k =0;k<temp_pos[j][2].length;k++ ) 
-        {
-        
+         {
          clear_cell_color(temp_pos[j][2][k][1])
          }
    
@@ -96,6 +89,7 @@ const handleClick = () =>{
     
     }
 }
+
 try{
 element.addEventListener ('click',handleClick)
 } 
@@ -111,11 +105,7 @@ catch(e){}
     
 },[ref,board]);
   
-
-
   return   <div key={id} id={id}  onClick={()=>{
-
-
     
   }} className={styles.test}>
     {

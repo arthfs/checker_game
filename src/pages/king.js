@@ -1,9 +1,9 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useContext } from 'react'
 
-import Piece from './piece'
 import Styles from '../styles/Home.module.css'
 import {context} from  './context'
 import { experience_context } from './experience'
+import {player} from './index'
 import { possibility } from './dimensions';
 import { useEffect } from 'react'
 
@@ -11,27 +11,24 @@ export default function King({piece,id,position}) {
   const {board}   = useContext(experience_context)
   const {possibilities,changepossibilities} = useContext(context)
   useEffect(()=>{
-    for (let i =0 ;i<possibilities.length;i++)
+  
+    if (possibilities[0]!=undefined)
     {
-    // console.log(possibilities[i])
-    //var element =  document.getElementById('c5 0')
-     
-     var cell =  document.getElementById(possibilities[i][1])
-     //console.log(element)
+    {}
+    for (let i =0 ;i<possibilities[0][2].length;i++)
+    {
+  
+    var cell =  document.getElementById(possibilities[0][2][i][1])
     try {
      cell.style.backgroundColor = 'yellow'
     }
     catch(e){}
     }
-
+  }
     const handleclick = ()=> {
-      console.log('clicked')
-      const poss = possibility('',position,id,board)
-      changepossibilities(poss['possibilities'])
-    // console.log(poss)
-   // var element =  document.getElementById('c5 2')
-   // console.log(board['4 1'])
-    //element.style.backgroundColor = 'yellow'
+      const poss = possibility(player,position,id,board)
+   
+      changepossibilities ([[id,poss['positition'],poss['possibilities']]] )
      
      }
    
@@ -43,7 +40,7 @@ export default function King({piece,id,position}) {
    
   },[possibilities])
   return (
-    <div className={Styles.king} id={id} >
+    <div className={Styles.king} id={id}  >
        {piece}
        <img className={Styles.star} src='king.jpg'></img>
     </div>

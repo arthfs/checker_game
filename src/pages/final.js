@@ -4,7 +4,6 @@ import Cell from './cell'
 import King from './king'
 import Piece from './piece'
 import { experience_context } from './experience'
-import {player} from './index'
 import styles from "../styles/Home.module.css"
 import { useState } from 'react'
 
@@ -40,7 +39,7 @@ useEffect(()=>{
                 else if ( ['kred','kwhite'].includes( board[pos][0] ))
                 { //console.log('king')
                   temp.push(
-                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King id={`k${i} ${j}`} position ={`${i} ${j}`} piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
+                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King id={`k${i+1} ${j+1}`} position ={`${i+1} ${j+1}`} piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
                   
 
                 }
@@ -61,8 +60,7 @@ useEffect(()=>{
   changeresult(result)
 
   },[board])
-//console.log(!['kred','kwhite'].includes( 'red' ))
-//console.log(result)
+
 
 
 
@@ -71,24 +69,40 @@ return (
     <> 
     <div className={styles.title}>     experience </div> 
     <button onClick={()=>{
+  
   changeboard({'1 2':[null,'whitecells']})
   changeboard({'1 2':  [null,'whitecells']})
 changeboard({'1 0' : [null,'whitecells']})
 //changeboard({'4 3' : ['red','whitecells']})
 changeboard({'2 1' : [null,'whitecells']})
 changeboard({'0 5' : [null,'whitecells']})
-//changeboard({'6 5' : ['white','whitecells']})
+changeboard({'6 5' : ['white','whitecells']})
 //changeboard({'3 4' : ['red','whitecells']})
 changeboard({'6 7' : [null,'whitecells']})
+changeboard({'7 6' : ['white','blackcells']})
+//changeboard({'6 5' : [null,'whitecells']})
+changeboard({'5 4' : [null,'blackcells']})
+
 changeboard({'1 2' : [null,'whitecells']})
 changeboard({'0 1' : [null,'whitecells']})
 changeboard({'1 2' : [null,'whitecells']})
 changeboard({'2 3':  [null,'whitecells']})
-changeboard({'7 6' : [null,'whitecells']})
+changeboard({'4 3':  ['white','blackcells']})
+//changeboard({'7 6' : [null,'whitecells']})
+changeboard({'0 7' : [null,'whitecells']})
+changeboard({'1 6' : [null,'whitecells']})
+changeboard({'2 5' : [null,'whitecells']})
+changeboard({'5 6' : [null,'whitecells']})
+changeboard({'5 2' : ['white','blackcells']})
+changeboard({'7 0' : [null,'whitecells']})
+changeboard({'6 1' : [null,'whitecells']})
+changeboard({'0 5' : ['white','whitecells']})
+changeboard({'2 5' : ['kred','blackcells']})
+
 //board['5 2'] = {null:'whitecells'}
 
 //board['7 6'] = ['kwhite','whitecells']
-      
+    
     }}>ideal position</button>
    
     <div className={styles.arthur}>
