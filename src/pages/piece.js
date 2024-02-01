@@ -43,7 +43,7 @@ const element = document.getElementById(id);
 
 const handleClick = () =>{
   
- console.log( possibility(player,ref[id],id,board))
+// console.log( possibility(player,ref[id],id,board))
   //  if (color == 'red')
     if (true)
     { 

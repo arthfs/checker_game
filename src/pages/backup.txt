@@ -16,41 +16,37 @@ export   function possibility (player, position,id,board){
             const [r,c] = position.toString().split(' ')
             const poss =[]
             let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
-
+          
         if (!(board[arthur][0]=='red' && player == 'player 1'))
           // if (player=='player 1') 
       
             {   
               temp1r+=1
               temp1c-=1;
-              temp2c+=1
 
+              temp2c+=1
               if ((temp1r>=1 && temp1r<=8) && ((temp1c>=1 && temp1c<=8) ))  
               { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`
           
                 if (board[test]=='blackcells'|| board[test][0]==null)  result.push( [position ,`c${parseInt( temp1r)} ${parseInt(temp1c)}`])         
-                var test2 = `${temp1r } ${temp1c-2}`
-                if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${temp1r-1 } ${temp1c-1}`]!='blackcells' ) && (board[`${temp1r-1 } ${temp1c-1}`][0]!=null) && (board[`${temp1r-1 } ${temp1c-1}`][0].replace('k','') != board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] )) 
-  
-                 {
-                  result.push([position, `c${temp1r+1} ${temp1c-1}`])     
-                 }
-                       
+                var test2 = `${parseInt( temp1r) } ${parseInt( temp1c-2)}`
+                   //console.log( board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0]!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0].replace('k','') )
+                  // console.log(`${parseInt( temp1r-1) } ${parseInt( temp1c-1)}`)
+                  // console.log(board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0])
+                   if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0].replace('k','')!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] ) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0]!=null) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`]!='blackcells' ) ) {result.push([position, `c${temp1r+1} ${temp1c-1}`])  }
+          
               }
-             
              
               if (( (temp1r>=1 && temp1r<=8) && ((temp2c>=1 && temp2c<=8) )))
               { 
                 var test  = `${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`
                 
                 if (board[test]=='blackcells' || board[test][0]==null)  result.push([position, `c${parseInt(temp1r)} ${temp2c}`])  
-                var test2 = `${temp1r } ${temp2c}`
-                if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${temp1r-1 } ${temp2c-1}`]!='blackcells' ) && (board[`${temp1r-1 } ${temp2c-1}`][0]!=null) && (board[`${temp1r-1 } ${temp2c-1}`][0].replace('k','') != board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] )) 
-  
-                 {
-                  result.push([position, `c${temp1r+1} ${temp2c+1}`])     
-                 }
-              
+                  
+                var test2 = `${parseInt( temp1r) } ${parseInt( temp2c)}`
+             //   console.log( board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`][0]!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0].replace('k','') )
+                if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`][0].replace('k','')!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] ) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`][0]!=null) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`]!='blackcells' ))  {result.push([position, `c${temp1r+1} ${temp2c+1}`])      }
+       
               }
               
             
@@ -60,39 +56,29 @@ export   function possibility (player, position,id,board){
               temp1r-=1
               temp1c-=1;
               temp2c+=1
-              
-              
+             
               if ((temp1r>=1 && temp1r<=8) && ((temp1c>=1 && temp1c<=8) ))  
               { var test  = `${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`
            
-              if (board[test]=='blackcells'|| board[test][0]==null) 
-                 { 
-                   result.push([position, `c${temp1r} ${temp1c}`])      
-                 }
+              if (board[test]=='blackcells'|| board[test][0]==null) result.push([position, `c${temp1r} ${temp1c}`])      
                  
-              var test2 = `${temp1r-2 } ${temp1c-2}`
-          
-              if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${temp1r-1 } ${temp1c-1}`]!='blackcells' ) && (board[`${temp1r-1 } ${temp1c-1}`][0]!=null) && (board[`${temp1r-1 } ${temp1c-1}`][0].replace('k','') != board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] )) 
-
-                  {
-                    result.push([position, `c${temp1r-1} ${temp1c-1}`])     
-                  }
+              var test2 = `${parseInt( temp1r)-2 } ${parseInt( temp1c)-2}`             
+              if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0].replace('k','')!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] ) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`][0]!=null) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp1c)-1}`]!='blackcells' ) ) result.push([position, `c${temp1r-1} ${temp1c-1}`])      
+                
               }
-              
-                   
-              
+              console.log('artgy')
+           /* 
               if (( (temp1r>=1 && temp1r<=8) && ((temp2c>=1 && temp2c<=8) )))
-              {   var test  = `${ temp1r-1 } ${ temp2c-1}`
-                  if (board[test]=='blackcells' || board[test][0]==null) result.push([position, `c${temp1r} ${temp2c}`])      
-               
-                  var test2 = `${temp1r } ${ temp2c}`
-                  if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${temp1r-1 } ${temp2c-1}`]!='blackcells' ) && (board[`${temp1r-1 } ${temp2c-1}`][0]!=null) && (board[`${temp1r-1 } ${temp2c-1}`][0].replace('k','') != board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] )) 
-
-                  {
-                    result.push([position, `c${temp1r-1} ${temp2c+1}`])     
-                  }
+              { 
+                var test  = `${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`
+                
+               if (board[test]=='blackcells' || board[test][0]==null) result.push([position, `c${temp1r} ${temp2c}`])      
+               var test2 = `${parseInt( temp1r)-2 } ${parseInt( temp2c)}`
               
+               if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`][0].replace('k','')!= board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] ) && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`][0]!=null )  && (board[`${parseInt( temp1r)-1 } ${parseInt( temp2c)-1}`]!='blackcells' )) result.push([position, `c${temp1r-1} ${temp2c+1}`])      
+                    
               }
+              */
             }
 
             
@@ -103,7 +89,6 @@ export   function possibility (player, position,id,board){
                  
             
             }
-           
     }
   else 
   { 

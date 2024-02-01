@@ -82,9 +82,9 @@ changeboard({'6 7' : [null,'whitecells']})
 changeboard({'7 6' : ['white','blackcells']})
 //changeboard({'6 5' : [null,'whitecells']})
 changeboard({'5 4' : [null,'blackcells']})
-
+changeboard({'6 5' : ['red','blackcells']})
 changeboard({'1 2' : [null,'whitecells']})
-changeboard({'0 1' : [null,'whitecells']})
+//changeboard({'0 1' : [null,'whitecells']})
 changeboard({'1 2' : [null,'whitecells']})
 changeboard({'2 3':  [null,'whitecells']})
 changeboard({'4 3':  ['white','blackcells']})
@@ -97,7 +97,19 @@ changeboard({'5 2' : ['white','blackcells']})
 changeboard({'7 0' : [null,'whitecells']})
 changeboard({'6 1' : [null,'whitecells']})
 changeboard({'0 5' : ['white','whitecells']})
-changeboard({'2 5' : ['kred','blackcells']})
+changeboard({'2 3' : [null,'blackcells']})
+changeboard({'4 1' : ['red','blackcells']})
+changeboard({'5 4' : ['red','blackcells']})
+changeboard({'5 2' : ['red','blackcells']})
+changeboard({'4 5' : ['white','blackcells']})
+changeboard({'2 1' : ['red','blackcells']})
+changeboard({'4 5' : ['white','blackcells']})
+changeboard({'5 6' : [null,'blackcells']})
+changeboard({'4 3' : [null,'blackcells']})
+changeboard({'6 3' : ['kred','blackcells']})
+//changeboard({'6 7' : ['red','blackcells']})
+
+
 
 //board['5 2'] = {null:'whitecells'}
 
