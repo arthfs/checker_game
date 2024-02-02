@@ -15,6 +15,8 @@ export default function King({piece,id,position}) {
     if (possibilities[0]!=undefined)
     {
     {}
+
+    // set the background color for all the cells a king can move
     for (let i =0 ;i<possibilities[0][2].length;i++)
     {
   
@@ -26,6 +28,7 @@ export default function King({piece,id,position}) {
     }
   }
     const handleclick = ()=> {
+      //update all the cells a king can move
       const poss = possibility(player,position,id,board)
    
       changepossibilities ([[id,poss['positition'],poss['possibilities']]] )

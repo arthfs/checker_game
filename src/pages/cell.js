@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { clear_cell_color, move } from './dimensions'
-
+import { clear_cell_color, move,remove_piece } from './dimensions'
 import {context} from './context'
 import { experience_context } from './experience'
 import  { reference } from './reference'
@@ -56,7 +55,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             source1 = temp[p][1]
                            source1= temp[p][2][q][1]
                            destination = temp[p][2][q][1]
-                            //console.log(temp[p])
+                            console.log(temp[p])
                             quit = true;
                             break;
                           

@@ -34,6 +34,8 @@ export   function possibility (player, position,id,board){
   
                  {
                   result.push([position, `c${temp1r+1} ${temp1c-1}`])     
+                  //delete this piece
+                  //console.log(`${temp1r-1} ${temp1c-1}`)
                  }
                        
               }
@@ -49,6 +51,8 @@ export   function possibility (player, position,id,board){
   
                  {
                   result.push([position, `c${temp1r+1} ${temp2c+1}`])     
+                  //delete this piece
+                  //console.log(`${temp1r-1} ${temp2c-1}`)
                  }
               
               }
@@ -76,6 +80,8 @@ export   function possibility (player, position,id,board){
 
                   {
                     result.push([position, `c${temp1r-1} ${temp1c-1}`])     
+                    //delete this piece
+                    //console.log(`${temp1r-1} ${temp1c-1}`)
                   }
               }
               
@@ -89,7 +95,10 @@ export   function possibility (player, position,id,board){
                   if ((board[test2][0]==null|| board[test2]=='blackcells') && (board[`${temp1r-1 } ${temp2c-1}`]!='blackcells' ) && (board[`${temp1r-1 } ${temp2c-1}`][0]!=null) && (board[`${temp1r-1 } ${temp2c-1}`][0].replace('k','') != board[ `${parseInt( id[0])-1} ${parseInt( id[2])-1}` ][0] )) 
 
                   {
-                    result.push([position, `c${temp1r-1} ${temp2c+1}`])     
+                    result.push([position, `c${temp1r-1} ${temp2c+1}`])  
+                    
+                    //delete this piece
+                    //console.log(`${temp1r-1} ${temp2c-1}`)   
                   }
               
               }
@@ -261,4 +270,9 @@ export default function Dimensions() {
   return (
     <div>dimensions</div>
   )
+}
+
+export function remove_piece(funct,position)
+{ 
+  funct({[position]:[null,'whitecell']})
 }

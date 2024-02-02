@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 
-import { clear_cell_color } from './dimensions';
+import { remove_piece, clear_cell_color } from './dimensions';
 import {context} from  './context'
 import { experience_context } from './experience'
 import {player} from './index'
@@ -42,13 +42,12 @@ useEffect(()=>
 const element = document.getElementById(id);
 
 const handleClick = () =>{
-  
-// console.log( possibility(player,ref[id],id,board))
-  //  if (color == 'red')
+//  remove_piece(changeboard,'5 0')
+
     if (true)
     { 
     var oldstyle = document.getElementById('c1 2')
-   
+   // restore the style of the current  cells a piece can move 
    for (let j = 0;j<temp_pos.length;j++)
     { 
       try{ 
@@ -59,7 +58,7 @@ const handleClick = () =>{
    
     }
     catch(e){console.log(e.message)
-      //console.log(`@@${temp_pos[j][1]}`)
+      
   }
     }
     temp_pos = []
@@ -71,8 +70,10 @@ const handleClick = () =>{
       temp_pos.push(pos[i])
     }
 
+    // get the cells a piece can move
      changepossibilities([[id,possibility(player,ref[id],id,board)['position'],temp_pos]])
 
+     // change their style
     for (let i = 0 ;i<pos.length;i++)
     {
       try 
