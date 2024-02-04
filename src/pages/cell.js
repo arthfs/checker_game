@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { clear_cell_color, move,remove_piece } from './dimensions'
+import { clear_cell_color, move, possibility, remove_piece } from './dimensions'
+
 import {context} from './context'
+import { delcontext } from './deletecontext'
 import { experience_context } from './experience'
+import { player } from '.'
 import  { reference } from './reference'
 import styles from '../styles/Home.module.css'
 import { useContext } from 'react'
@@ -9,9 +12,12 @@ import { useEffect } from 'react'
 
 export default function Cell({ke,cls,id,child=undefined} ) {
   const [temp,settemp] = useState([])
+  const {deletedpiece,change_deleted_piece} = useContext(delcontext)
   const changetemp = (newvalue)=> settemp(newvalue)
-
-   
+  
+  useEffect(()=>{
+    console.log(deletedpiece)
+  },[deletedpiece]) 
   const {possibilities,changepossibilities} = useContext(context)
   const {ref,changeref} = useContext(reference)
   const { board,changeboard } = useContext(experience_context)
@@ -28,6 +34,8 @@ export default function Cell({ke,cls,id,child=undefined} ) {
     const element    = document.getElementById(id)
 
     const handleClick=()=>{
+    // change_deleted_piece ('er')
+   //  console.log(deletedpiece)
    try {console.log(temp)
   }
    catch(e){}
@@ -53,9 +61,12 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             present = true; 
                             source = temp[p][0];
                             source1 = temp[p][1]
-                           source1= temp[p][2][q][1]
-                           destination = temp[p][2][q][1]
-                            console.log(temp[p])
+                            source1= temp[p][2][q][1]
+                            destination = temp[p][2][q][1]
+                            // console.log(temp[p])
+                            var  id_to_be_deleted = possibility( player,temp[p][0],temp[p][1],board)['deleted']
+                            console.log( id_to_be_deleted )
+                            remove_piece (changeboard,id_to_be_deleted)
                             quit = true;
                             break;
                           

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
+import { clear_cell_color, remove_piece } from './dimensions';
 
-import { remove_piece, clear_cell_color } from './dimensions';
 import {context} from  './context'
 import { experience_context } from './experience'
 import {player} from './index'
@@ -74,6 +74,7 @@ const handleClick = () =>{
      changepossibilities([[id,possibility(player,ref[id],id,board)['position'],temp_pos]])
 
      // change their style
+   
     for (let i = 0 ;i<pos.length;i++)
     {
       try 
