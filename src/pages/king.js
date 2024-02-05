@@ -30,8 +30,8 @@ export default function King({piece,id,position}) {
     const handleclick = ()=> {
       //update all the cells a king can move
       const poss = possibility(player,position,id,board)
-   
-      changepossibilities ([[id,poss['positition'],poss['possibilities']]] )
+    //  console.log(poss['position'])
+      changepossibilities ([[id,poss['position'],poss['possibilities']]] )
      
      }
    

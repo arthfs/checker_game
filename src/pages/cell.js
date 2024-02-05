@@ -16,7 +16,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
   const changetemp = (newvalue)=> settemp(newvalue)
   
   useEffect(()=>{
-    console.log(deletedpiece)
+   // console.log(deletedpiece)
   },[deletedpiece]) 
   const {possibilities,changepossibilities} = useContext(context)
   const {ref,changeref} = useContext(reference)
@@ -25,6 +25,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
   useEffect(()=>{
 
   changetemp(possibilities)
+//  console.log(temp)
   },[board,possibilities])
 
   useEffect(()=>{
@@ -36,9 +37,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
     const handleClick=()=>{
     // change_deleted_piece ('er')
    //  console.log(deletedpiece)
-   try {console.log(temp)
-  }
-   catch(e){}
+
      
         var test  = `${parseInt( id[1])-1 } ${parseInt( id[3])-1}`
      
@@ -48,8 +47,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
         var clear = []
       if ( board[test]=='blackcells' || board[test][0]==null)
             {   let present = false; 
-         
-                try {//console.log(temp)
+                 //console.log(id)
+                try 
+                {//console.log(temp)
                 for (let p=0 ; p<temp.length ;p++) 
                 {   var e = temp[p][1]
                     let quit = false
@@ -64,9 +64,16 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             source1= temp[p][2][q][1]
                             destination = temp[p][2][q][1]
                             // console.log(temp[p])
-                            var  id_to_be_deleted = possibility( player,temp[p][0],temp[p][1],board)['deleted']
+                            var  id_to_be_deleted = possibility( player,temp[p][1],temp[p][0],board)['deleted']
+                           // console.log(`${ parseInt(source[0])-1} ${ parseInt(source[2])-1} ${ parseInt(id[1])-1} ${ parseInt(id[3])-1}`)
+                        //   console.log(temp[p])
                             console.log( id_to_be_deleted )
-                            remove_piece (changeboard,id_to_be_deleted)
+                        //   if (id_to_be_deleted.length == 1) remove_piece (changeboard,id_to_be_deleted)
+                        //   else 
+                          
+                        //   {
+                            
+                          // }
                             quit = true;
                             break;
                           
@@ -79,6 +86,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
             catch(e)
             { 
             console.log(e.message)
+                                
               
             }
     
@@ -101,9 +109,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                      source= source.replace('k','')
                      var po = `${parseInt( source[0])-1 } ${parseInt( source[2])-1}`
                      var poo = [null,"blackcells"]
-                     console.log(po)
+                   //  console.log(po)
                      var isking=  board[po][0] =='k' ;
-                     console.log(isking)
+                   //  console.log(isking)
               
                      changeboard({[po]:poo})
                 
