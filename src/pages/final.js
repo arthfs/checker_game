@@ -7,11 +7,16 @@ import { experience_context } from './experience'
 import styles from "../styles/Home.module.css"
 import { useState } from 'react'
 
+//const timer = setInterval( changetime,1000)
+var time =15
+const changetime = ()=>{ time-=1}
+
 export default function Affichage() {
 const { board,changeboard } = useContext(experience_context)
   
 const [res,setresult] = useState([])
 const changeresult= (newlist)=>setresult(newlist)
+const [timeleft,settime] = useState(15)
 
 
 
@@ -122,7 +127,9 @@ changeboard({'4 3' : ['red','blackcells']})
 //board['7 6'] = ['kwhite','whitecells']
     
     }}>ideal position</button>
-   
+    <button onClick={()=>{} }> start</button>
+    <button onClick={()=>{ } }> cancel</button>
+   <div>{ time}</div>
     <div className={styles.arthur}>
   
     <div className={styles.board}>

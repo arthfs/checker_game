@@ -19,11 +19,12 @@ export   function possibility (player, position,id,board){
             const [r,c] = position.toString().split(' ')
             const poss =[]
             let  temp1r = parseInt( r)  ,temp1c = parseInt (c), temp2c = parseInt( c);
-
-        if (!(board[arthur][0]=='red' && player == 'player 1'))
+        
+        
+        if ((board[arthur][0]== 'red' && player == 'player 2') || (board[arthur][0]== 'white' && player=='player 1'))
           // if (player=='player 1') 
       
-            {   
+            {  
               temp1r+=1
               temp1c-=1;
               temp2c+=1

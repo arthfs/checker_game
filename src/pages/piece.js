@@ -21,6 +21,7 @@ const {ref} = useContext(reference)
 
 temp_pos = [...possibilities]
 useEffect(() => {
+  //console.log(temp_pos)
 }, [possibilities]); 
 
 
@@ -42,7 +43,8 @@ const element = document.getElementById(id);
 
 const handleClick = () =>{
 //  remove_piece(changeboard,'5 0')
-
+  
+    
     if (true)
     { 
     var oldstyle = document.getElementById('c1 2')
