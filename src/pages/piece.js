@@ -21,7 +21,6 @@ const {ref} = useContext(reference)
 
 temp_pos = [...possibilities]
 useEffect(() => {
- 
 }, [possibilities]); 
 
 
