@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { clear_cell_color, move, possibility, remove_piece } from './dimensions'
 
 import {context} from './context'
-import { delcontext } from './deletecontext'
 import { experience_context } from './experience'
 import { player } from '.'
 import  { reference } from './reference'
@@ -12,12 +11,9 @@ import { useEffect } from 'react'
 
 export default function Cell({ke,cls,id,child=undefined} ) {
   const [temp,settemp] = useState([])
-  const {deletedpiece,change_deleted_piece} = useContext(delcontext)
   const changetemp = (newvalue)=> settemp(newvalue)
   
-  useEffect(()=>{
-   // console.log(deletedpiece)
-  },[deletedpiece]) 
+
   const {possibilities,changepossibilities} = useContext(context)
   const {ref,changeref} = useContext(reference)
   const { board,changeboard } = useContext(experience_context)
@@ -68,23 +64,18 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             var result_x,result_y
                            // console.log(`${ parseInt(source[0])-1} ${ parseInt(source[2])-1} ${ parseInt(id[1])-1} ${ parseInt(id[3])-1}`)
                         //   console.log(temp[p])
-                            console.log( id_to_be_deleted )
+                            //console.log( id_to_be_deleted )
                             var destination_x = parseInt(id[1])-1,destination_y = parseInt(id[3])-1
                             var source_x = parseInt(source[0])-1,source_y = parseInt(source[2])-1
                             
                             result_x = destination_x > source_x ? source_x+1 : source_x-1
                             result_y = destination_y > source_y ? source_y+1 : source_y-1
-                            console.log( `${source_x} ${source_y}`)
-                            console.log( `${destination_x} ${destination_y}`)
-                            console.log(`${result_x} ${result_y}`)
+                            //console.log( `${source_x} ${source_y}`)
+                            //console.log( `${destination_x} ${destination_y}`)
+                            //console.log(`${result_x} ${result_y}`)
                             remove_piece (changeboard,`${result_x} ${result_y}`)
                             
-                        //   if (id_to_be_deleted.length == 1) remove_piece (changeboard,id_to_be_deleted)
-                        //   else 
-                          
-                        //   {
-                            
-                          // }
+                       
                             quit = true;
                             break;
                           
@@ -120,9 +111,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                      source= source.replace('k','')
                      var po = `${parseInt( source[0])-1 } ${parseInt( source[2])-1}`
                      var poo = [null,"blackcells"]
-                   //  console.log(po)
-                     var isking=  board[po][0] =='k' ;
-                   //  console.log(isking)
+                    // console.log(board[po])
+                     var isking=  board[po][0][0] =='k' ;
+                     //console.log(isking)
               
                      changeboard({[po]:poo})
                 
@@ -132,11 +123,11 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                     var poo1 = [ parseInt(source[0])<4 ? 'white': 'red',"blackcells"] 
                 
                    if (!isking && [1,8].includes( parseInt(destination[1])) ) 
-                   { 
+                   { //console.log(!isking)
                     changeboard({[test]:[ 'k'+board[po][0] ,'blackcells']}) 
                    }
                    else 
-                   {
+                   {//console.log(test)
                    changeboard({[test]:[ board[po][0],'blackcells']})
                    }
                    

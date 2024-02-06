@@ -32,26 +32,26 @@ useEffect(()=>{
                { 
                temp.push(
                
-                   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<Piece id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} color={board[pos][0]} ></Piece>} >  </Cell> )
+                   <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' || board[pos][0] ==null  ? styles.blackcells : styles.whitecells  }  child={<Piece id={`${i+1} ${j+1}`} position={`${i+1} ${j+1}`} color={board[pos][0]} ></Piece>} >  </Cell> )
                                   
                  }
                  
                 else if ( ['kred','kwhite'].includes( board[pos][0] ))
                 { //console.log('king')
                   temp.push(
-                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  child={<King id={`k${i+1} ${j+1}`} position ={`${i+1} ${j+1}`} piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
+                          <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' || board[pos][0] ==null  ? styles.blackcells : styles.whitecells  }  child={<King id={`k${i+1} ${j+1}`} position ={`${i+1} ${j+1}`} piece={<Piece id={'0 1'} color={ board[pos][0] =='kred' ? 'red':'white'} position={''}></Piece>}></King>} >  </Cell> )
                   
 
                 }
                else 
                {
                  temp.push(
-                 <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' ? styles.blackcells : styles.whitecells  }  >  </Cell> 
+                 <Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos][1] == 'blackcells' || board[pos][0] ==null ? styles.blackcells : styles.whitecells  }  >  </Cell> 
                  )
                }
                //temp.push(<Pion color={ar[pos]} ></Pion>)
              }
-          else temp.push(<Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos] == 'blackcells' ? styles.blackcells : styles.whitecells  }  ></Cell>)
+          else temp.push(<Cell ke={`${i+1}${j+1}`} id={`c${i+1} ${j+1}`}  cls={ board[pos] == 'blackcells' || board[pos][0] ==null  ? styles.blackcells : styles.whitecells  }  ></Cell>)
        }
        
        result.push(<div style={{width:'fit-content', display:'flex',flexDirection:'row',columnGap:'2px'}}> {temp} </div> )
@@ -99,7 +99,7 @@ changeboard({'6 1' : ['white','blackcells']})
 changeboard({'0 5' : ['white','whitecells']})
 changeboard({'2 3' : [null,'blackcells']})
 changeboard({'4 1' : ['red','blackcells']})
-changeboard({'5 4' : ['kred','blackcells']})
+changeboard({'6 5' : ['kred','blackcells']})
 changeboard({'5 2' : ['red','blackcells']})
 changeboard({'4 5' : ['white','blackcells']})
 changeboard({'2 1' : ['red','blackcells']})
