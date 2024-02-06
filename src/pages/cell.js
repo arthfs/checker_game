@@ -65,9 +65,20 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             destination = temp[p][2][q][1]
                             // console.log(temp[p])
                             var  id_to_be_deleted = possibility( player,temp[p][1],temp[p][0],board)['deleted']
+                            var result_x,result_y
                            // console.log(`${ parseInt(source[0])-1} ${ parseInt(source[2])-1} ${ parseInt(id[1])-1} ${ parseInt(id[3])-1}`)
                         //   console.log(temp[p])
                             console.log( id_to_be_deleted )
+                            var destination_x = parseInt(id[1])-1,destination_y = parseInt(id[3])-1
+                            var source_x = parseInt(source[0])-1,source_y = parseInt(source[2])-1
+                            
+                            result_x = destination_x > source_x ? source_x+1 : source_x-1
+                            result_y = destination_y > source_y ? source_y+1 : source_y-1
+                            console.log( `${source_x} ${source_y}`)
+                            console.log( `${destination_x} ${destination_y}`)
+                            console.log(`${result_x} ${result_y}`)
+                            remove_piece (changeboard,`${result_x} ${result_y}`)
+                            
                         //   if (id_to_be_deleted.length == 1) remove_piece (changeboard,id_to_be_deleted)
                         //   else 
                           

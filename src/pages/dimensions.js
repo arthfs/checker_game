@@ -380,3 +380,12 @@ export function remove_piece(funct,position)
 { 
   funct({[position]:[null,'whitecells']})
 }
+
+/* 3 4
+  5 2
+
+
+
+  5 2
+  7 4
+*/
