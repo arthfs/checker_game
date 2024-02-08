@@ -22,7 +22,7 @@ export default function King({piece,id,position}) {
   
     var cell =  document.getElementById(possibilities[0][2][i][1])
     try {
-     cell.style.backgroundColor = 'yellow'
+    // cell.style.backgroundColor = 'yellow'
     }
     catch(e){}
     }

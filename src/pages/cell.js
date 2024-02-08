@@ -1,27 +1,39 @@
 import React, { useState } from 'react'
-import { clear_cell_color, move, possibility, remove_piece } from './dimensions'
+import { clear_cell_color, move, possibility, remove_piece, set_color } from './dimensions'
 
 import {context} from './context'
 import { experience_context } from './experience'
 import { player } from '.'
 import  { reference } from './reference'
 import styles from '../styles/Home.module.css'
+import { turn_context } from './turncontext'
 import { useContext } from 'react'
 import { useEffect } from 'react'
 
+var nextmove
 export default function Cell({ke,cls,id,child=undefined} ) {
   const [temp,settemp] = useState([])
+  const {turn,changeturn} = useContext(turn_context)
   const changetemp = (newvalue)=> settemp(newvalue)
-  
 
   const {possibilities,changepossibilities} = useContext(context)
   const {ref,changeref} = useContext(reference)
   const { board,changeboard } = useContext(experience_context)
   
   useEffect(()=>{
-
+//  console.log(possibilities)
   changetemp(possibilities)
+  if (nextmove!=undefined)
+  {
+  var result = possibility( 'player 2','4 5','4 5',board)['possibilities']
+  console.log(result) 
+ 
+ // set_color(result)
+  //changepossibilities([['4 5',result,'4 5']])
+  nextmove = undefined
+  }
 //  console.log(temp)
+
   },[board,possibilities])
 
   useEffect(()=>{
@@ -33,8 +45,9 @@ export default function Cell({ke,cls,id,child=undefined} ) {
     const handleClick=()=>{
     // change_deleted_piece ('er')
    //  console.log(deletedpiece)
-
-     
+//console.log(temp)
+       
+        
         var test  = `${parseInt( id[1])-1 } ${parseInt( id[3])-1}`
      
         var source=''
@@ -62,12 +75,25 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                             // console.log(temp[p])
                             var  id_to_be_deleted = possibility( player,temp[p][1],temp[p][0],board)['deleted']
                             var result_x,result_y
+                            changeref({[source]:null})
+                            //console.log(destination.)
+                             changeref({[destination.replace('c','')]:ref[source]})
+                           // console.log(ref[destination])
+                            nextmove = '4 5'
                            // console.log(`${ parseInt(source[0])-1} ${ parseInt(source[2])-1} ${ parseInt(id[1])-1} ${ parseInt(id[3])-1}`)
                         //   console.log(temp[p])
-                            console.log( id_to_be_deleted )
+                           // console.log( id_to_be_deleted )
+                        //  changepossibilities(possibility( 'player 2','4 5','4 5',board)['possibilities'])
+                           //set_color([['4 5','c4 5']])
+                         
+                          // set_color(result)
+
+                        //console.log(   possibility( 'player 2','4 5','4 5',board)['possibilities'])
                             if (id_to_be_deleted.length<2)
                             {
                               remove_piece(changeboard,id_to_be_deleted[0])
+                              //changeturn(turn =='player 1' ? 'player 2': 'player 1') 
+                            
                             }
                             else 
                             {
@@ -76,15 +102,13 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                               
                               result_x = destination_x > source_x ? source_x+1 : source_x-1
                               result_y = destination_y > source_y ? source_y+1 : source_y-1
-                              //console.log( `${source_x} ${source_y}`)
-                              //console.log( `${destination_x} ${destination_y}`)
-                              //console.log(`${result_x} ${result_y}`)
                               remove_piece (changeboard,`${result_x} ${result_y}`)
-                                  
+                             // changeturn(turn =='player 1' ? 'player 2': 'player 1') 
+                               
+                             
                             }
                           
-                       
-                            quit = true;
+                           quit = true;
                             break;
                           
                         }
@@ -101,7 +125,6 @@ export default function Cell({ke,cls,id,child=undefined} ) {
             }
     
                 if (present) {
-                    
                     translationY+= (70 * (parseInt(id[1])- parseInt(source[0] )))
                     translationX+= (70 * (parseInt(id[3])- parseInt(source[2] ))) 
                    
@@ -139,7 +162,7 @@ export default function Cell({ke,cls,id,child=undefined} ) {
                    changeboard({[test]:[ board[po][0],'blackcells']})
                    }
                    
-                 
+                
                 }
             }
             else

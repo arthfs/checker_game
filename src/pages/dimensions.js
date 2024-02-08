@@ -5,6 +5,7 @@ export var height_cell ="200px";
 //export var reference = [1,2,3,4,5,6,7,8]
 
 export   function possibility (player, position,id,board){
+  //console.log(id)
   var to_be_deleted = []
   // get all the possibiles moves for a particular piece
 
@@ -382,11 +383,19 @@ export function remove_piece(funct,position)
   funct({[position]:[null,'whitecells']})
 }
 
-/* 3 4
-  5 2
-
-
-
-  5 2
-  7 4
-*/
+export function set_color(pos)
+{
+  for (let i = 0 ;i<pos.length;i++)
+  {
+    try 
+    {
+       const test1 = document.getElementById(pos[i][1])
+       test1.style.backgroundColor='yellow'
+    }
+    catch(e)
+    {
+      
+    }
+    
+  }
+}
